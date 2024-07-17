@@ -7,32 +7,46 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <form>
-        <input type="search" placeholder="Enter city" required />
-        <input type="submit" label="submit" />
-      </form>
-    </header>
-    <main>
-      <h1>Nairobi</h1>
-      <p>
-        Wednesday, 12:04 light rain
-        <br />
-        Humidity: 68%, wind: okm/h<br />
-        ⛅ 19 ℃
-      </p>
-    </main>
-    <footer>
-      This project was coded by
-      <a href="https://github.com/HelvyJ" target="_blank">Helvy J</a> and is
-      open sourced on
-      <a href="https://github.com/HelvyJ/weather-hmwk" target="_blank">
-        GitHub</a
-      >
-      and hosted on
-      <a href="https://sage-bombolone-a23797.netlify.app/" target="_blank">
-        Netlify</a
-      >
-    </footer>
+    <div class="weather-app">
+      <header>
+        <form>
+          <input
+            type="search"
+            placeholder="Enter city"
+            required
+            class="search-form"
+          />
+          <input type="submit" label="submit" class="search-form-button" />
+        </form>
+      </header>
+      <main>
+        <h1 class = "weather-app-city">Nairobi</h1>
+        <div class = "weather-app-data">
+          <p class = "weather-app-details">
+          Wednesday, 12:04 light rain
+          <br />
+          Humidity: <strong> 68% </strong>, wind: <strong> 12km/h</strong><br />
+          <div class = "weather-app-temperature-container">
+            <div class = "weather-app-icon"> ⛅ </div>
+            <div class = "weather-app-temperature"> 19 </div>
+            <div class = "weather-app-unit"> ℃ </div>
+          </div>
+             </p>
+        </div>
+  
+      </main>
+      <footer>
+        This project was coded by
+        <a href="https://github.com/HelvyJ" target="_blank">Helvy J</a> and is
+        open sourced on
+        <a href="https://github.com/HelvyJ/weather-hmwk" target="_blank">
+          GitHub</a
+        >
+        and hosted on
+        <a href="https://sage-bombolone-a23797.netlify.app/" target="_blank">
+          Netlify</a
+        >
+      </footer>
+    </div>
   </body>
 </html>
