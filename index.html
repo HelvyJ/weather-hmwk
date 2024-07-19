@@ -1,54 +1,57 @@
-<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adie's weather app</title>
+    <title>Weather app</title>
     <link rel="stylesheet" href="style.css" />
+    <script src = "https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>"></script>
   </head>
   <body>
     <div class="weather-app">
       <header>
-        <form class = "search-form" id = "search-form">
+        <form class ="search-form" id ="search-form">
           <input
             type="search"
-            placeholder="Enter city"
+            placeholder="Enter a city..."
             required
             class="search-form-input"
-            id = "search-form-input"
+            id ="search-form-input"
           />
-          <input type="submit" value="search" class="search-form-button" />
+          <input type="submit" value="Search" class="search-form-button" />
         </form>
       </header>
       <main>
-        <h1 class = "weather-app-city" id = "city">Nairobi</h1>
-        <div class = "weather-app-data">
-          <p class = "weather-app-details">
-          Wednesday, 12:04 light rain
-          <br />
-          Humidity: <strong> 68% </strong>, wind: <strong> 12km/h</strong><br />
-          <div class = "weather-app-temperature-container">
-            <div class = "weather-app-icon"> ⛅ </div>
-            <div class = "weather-app-temperature"> 19 </div>
-            <div class = "weather-app-unit"> ℃ </div>
+        <div class="weather-app-data">
+          <div>
+            <h1 class="weather-app-city" id = "city"></h1>
+            <p class="weather-app-details"><span id = "time"></span> <span id = "description" ></span>
+              <br />
+              Humidity: <strong id = "humidity"></strong>, wind:<strong id = "wind-speed">/strong>
+            </p>
           </div>
-             </p>
-        </div>
-  
+          <div class="weather-app-temperature-container"> 
+            <div class = "weather-app-icon" ></div>
+            <div id = "weather-app-icon" ></div>
+            <div class = "weather-app-temperature" id = "temperature"></div>
+            <div class = "weather-app-unit" id = "weather-app-unit">℃</div>
+          </div>
       </main>
+
+      
       <footer>
         This project was coded by
-        <a href="https://github.com/HelvyJ" target="_blank">Helvy J</a> and is
+        <a href="https://github.com/HelvyJ" target="-blank"> Helvy</a>, code
         open sourced on
-        <a href="https://github.com/HelvyJ/weather-hmwk" target="_blank">
-          GitHub</a
+        <a href="https://github.com/HelvyJ/weather-app" target="_blank">
+          github</a
         >
-        and hosted on
-        <a href="https://sage-bombolone-a23797.netlify.app/" target="_blank">
+        and website hosted on
+        <a href="https://helvy-weather-app.netlify.app/" target="_blank">
           Netlify</a
         >
-        <script src = "script.js"></script>
       </footer>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
