@@ -61,7 +61,6 @@ main {
 
 .weather-app-temperature-container {
   display: flex;
-  justify-content: space-between;
 }
 .weather-app-temperature {
   font-size: 88px;
@@ -79,8 +78,7 @@ main {
 
 .weather-forecast {
   display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
+  justify-content: space-between;
 }
 
 .weather-forecast-date {
