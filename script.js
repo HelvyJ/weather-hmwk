@@ -18,7 +18,7 @@ function updateWeather(response) {
 
   temperatureElement.innerHTML = Math.round(temperature);
 
-  getForecastresponse.data.city();
+  getForecast.response.data.city();
 }
 
 function formatDate(date) {
@@ -54,10 +54,20 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function getDay(timestamp) {
+  let date = new Date(timestamp * 10000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Nairobi");
+
+let forecastElement = document.querySelector("#forecast");
+forecastElement.innerHTML = forecastHtml;
 
 function getForecast(city) {
   let apiKey = "4957762b8056b6o3b394tfa4a3c95ba0";
@@ -69,24 +79,25 @@ function displayForecast(response) {
   let days = ["Tue", "Wed", "Thur", "Fri", "Sat"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
   <div class = "weather-forecast-day"> 
-              <div class = "weather-forecast-date">${day}</div>
-              <div class = "weather-forecast-icon">⛅</div>
+  <div class = "weather-forecast-date">${formatDay(day.time)}</div>
+  <img src = "${day.condition.icon_url}" class = "weather-forecast-icon" />
+
               <div class = "weather-forecast-temperatures">
               <div class = "weather-forecast-temperature">
-                  <strong>15°</strong> </div>
-                  <div class = "weather-forecast-temprature">9°</div>
+                  <strong>${Math.round(
+                    day.temperature.maximum
+                  )}°</strong> </div>
+                  <div class = "weather-forecast-temprature">${Math.round(
+                    day.temperature.minimum
+                  )}°</div>
+            
             </div>`;
+    }
   });
-
-  let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML = forecastHtml;
 }
-
-searchCity();
-
-displayForecast();
