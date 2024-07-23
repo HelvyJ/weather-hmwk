@@ -18,7 +18,7 @@ function updateWeather(response) {
 
   temperatureElement.innerHTML = Math.round(temperature);
 
-  getForecast.response.data.city();
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -54,20 +54,12 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function getDay(timestamp) {
+function formatDay(timestamp) {
   let date = new Date(timestamp * 10000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 
   return days[date.getDay()];
 }
-
-let searchFormElement = document.querySelector("#search-form");
-searchFormElement.addEventListener("submit", handleSearchSubmit);
-
-searchCity("Nairobi");
-
-let forecastElement = document.querySelector("#forecast");
-forecastElement.innerHTML = forecastHtml;
 
 function getForecast(city) {
   let apiKey = "4957762b8056b6o3b394tfa4a3c95ba0";
@@ -76,7 +68,6 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
-  let days = ["Tue", "Wed", "Thur", "Fri", "Sat"];
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
@@ -85,19 +76,26 @@ function displayForecast(response) {
         forecastHtml +
         `
   <div class = "weather-forecast-day"> 
-  <div class = "weather-forecast-date">${formatDay(day.time)}</div>
-  <img src = "${day.condition.icon_url}" class = "weather-forecast-icon" />
+    <div class = "weather-forecast-date">${formatDay(day.time)}</div>
+    
+    <img src = "${day.condition.icon_url}" class = "weather-forecast-icon" />
 
-              <div class = "weather-forecast-temperatures">
-              <div class = "weather-forecast-temperature">
-                  <strong>${Math.round(
-                    day.temperature.maximum
-                  )}°</strong> </div>
-                  <div class = "weather-forecast-temprature">${Math.round(
-                    day.temperature.minimum
-                  )}°</div>
-            
-            </div>`;
+    <div class = "weather-forecast-temperatures">
+      <div class = "weather-forecast-temperature">
+        <strong>${Math.round(day.temperature.maximum)}°</strong> </div>
+      <div class = "weather-forecast-temprature">${Math.round(
+        day.temperature.minimum
+      )}°</div>
+            </div>
+          </div>`;
     }
   });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
 }
+
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", handleSearchSubmit);
+
+searchCity("Nairobi");
